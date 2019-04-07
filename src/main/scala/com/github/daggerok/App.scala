@@ -31,5 +31,19 @@ object App {
     println(s"""
             |executed with warmer configuration "($from until $to).toArray.reverse" in: $withWarmerConfiguration
             |""".stripMargin)
+
+    val withIgnoringGCTime = withMeasurer(new Measurer.IgnoringGC) measure {
+      (from until to).toArray.reverse
+    }
+    println(s"""
+               |executed with IgnoringGC "($from until $to).toArray.reverse" in: $withIgnoringGCTime
+               |""".stripMargin)
+
+    val withMemoryFootprintTime = withMeasurer(new Measurer.MemoryFootprint) measure {
+      (from until to).toArray.reverse
+    }
+    println(s"""
+               |executed with MemoryFootprint "($from until $to).toArray.reverse" in: $withMemoryFootprintTime
+               |""".stripMargin)
   }
 }
