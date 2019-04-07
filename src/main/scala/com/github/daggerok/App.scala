@@ -20,5 +20,16 @@ object App {
     println(s"""
             |executed with warmer "($from until $to).toArray.reverse" in: $withWarmerTime
             |""".stripMargin)
+
+    val withWarmerConfiguration = config(
+      Key.exec.minWarmupRuns -> 20,
+      Key.exec.maxWarmupRuns -> 20,
+      Key.verbose -> true
+    ) withWarmer(new Warmer.Default) measure {
+      (from until to).toArray.reverse
+    }
+    println(s"""
+            |executed with warmer configuration "($from until $to).toArray.reverse" in: $withWarmerConfiguration
+            |""".stripMargin)
   }
 }
