@@ -21,15 +21,15 @@ repositories {
   mavenCentral()
 }
 
+val scalaVersion: String by project
+val scalaMajorVersion: String by project
+val scalaMeterVersion: String by project
+val junitVersion: String by project
+val scalatestVersion: String by project
+
 dependencies {
-  val scalaVersion: String by project
-  val scalaMajorVersion: String by project
-  val scalaMeterVersion: String by project
   implementation("org.scala-lang:scala-library:$scalaVersion")
   implementation("com.storm-enroute:scalameter-core_$scalaMajorVersion:$scalaMeterVersion")
-
-  val junitVersion: String by project
-  val scalatestVersion: String by project
   testImplementation("org.scalatest:scalatest_$scalaMajorVersion:$scalatestVersion")
   testImplementation("junit:junit:$junitVersion")
 }
@@ -37,9 +37,7 @@ dependencies {
 tasks.withType<Jar> {
   manifest {
     val mainClass: String by project
-    attributes(
-        "Main-Class" to mainClass
-    )
+    attributes("Main-Class" to mainClass)
   }
 }
 
