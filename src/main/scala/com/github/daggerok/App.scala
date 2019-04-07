@@ -4,8 +4,8 @@ import org.scalameter._
 
 object App {
   def main(args: Array[String]): Unit = {
-    val from = 0
-    val to = 1000000
+    val from = if (args.length < 1 || null == args(0)) 0 else args(0).toInt
+    val to = if (args.length < 2 || null == args(1)) 1000000 else args(1).toInt
     val time = measure {
       (from until to).toArray.reverse
     }

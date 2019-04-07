@@ -10,5 +10,5 @@ _usage_
 _output example_
 
 ```bash
-executed "(0 until 1000000).toArray.reverse" in: 51.127406 ms
+executed "(0 until 1000000).toArray.reverse" in: 50.537401 ms
 ```
